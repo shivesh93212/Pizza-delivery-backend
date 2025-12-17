@@ -1,5 +1,5 @@
 from sqlalchemy import create_engine
-from sqlalchemy.orm import Session,declarative_base
+from sqlalchemy.orm import sessionmaker,declarative_base
 from dotenv import load_dotenv
 import os 
 
@@ -9,6 +9,6 @@ DATABASE_URL=str(os.getenv("DATABASE_URL"))
 if not DATABASE_URL:
     raise RuntimeError("DATABASE_URL IS MISSING")
 engine=create_engine(DATABASE_URL,pool_pre_ping=True)
-SessionLocal=Session(bind=engine,autocommit=False,autoflush=False)
+SessionLocal=sessionmaker(bind=engine,autocommit=False,autoflush=False)
 
 Base=declarative_base()

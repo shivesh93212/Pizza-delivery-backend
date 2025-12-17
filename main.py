@@ -4,7 +4,7 @@ from auth import router as auth_router
 from schemas import router as schemas_router
 from orders import router as order_router
 from database import Base,engine
-
+import models
 
 app=FastAPI()
 
