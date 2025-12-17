@@ -8,7 +8,7 @@ load_dotenv()
 DATABASE_URL=str(os.getenv("DATABASE_URL"))
 if not DATABASE_URL:
     raise RuntimeError("DATABASE_URL IS MISSING")
-engine=create_engine(DATABASE_URL)
+engine=create_engine(DATABASE_URL,pool_pre_ping=True)
 SessionLocal=Session(bind=engine,autocommit=False,autoflush=False)
 
 Base=declarative_base()
