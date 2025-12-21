@@ -1,6 +1,5 @@
 
 from pydantic import BaseModel
-from typing import Optional
 
 class UserCreate(BaseModel):
     username:str
@@ -33,4 +32,7 @@ class UserOut(BaseModel):
     is_active: bool
 
     class Config:
-        orm_mode = True
+        from_attributes = True
+
+class MessageResponse(BaseModel):
+    message: str
